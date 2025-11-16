@@ -93,21 +93,32 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
+            flex-direction: row-reverse;
+        }
+
+        .logo-wrapper {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logo-wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
         }
 
         .logo {
-            height: 50px;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
+            height: 45px;
+            display: block;
         }
 
         .nav-links {
             display: flex;
             gap: 35px;
             list-style: none;
+            flex-direction: row-reverse;
         }
 
         .nav-links a {
@@ -995,9 +1006,18 @@
             border-top: 1px solid rgba(255, 107, 53, 0.2);
         }
 
-        .footer-logo {
-            height: 70px;
+        .footer-logo-wrapper {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 30px;
+            border-radius: 12px;
             margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-logo {
+            height: 60px;
+            display: block;
         }
 
         .social-links {
@@ -1224,7 +1244,9 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <img src="logo.png" alt="Team Tamir MMA" class="logo">
+            <div class="logo-wrapper">
+                <img src="logo.png" alt="Team Tamir MMA" class="logo">
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">ראשי</a></li>
                 <li><a href="#about">אודות</a></li>
@@ -1633,7 +1655,9 @@
 
     <!-- Footer -->
     <footer>
-        <img src="logo.png" alt="Team Tamir MMA" class="footer-logo">
+        <div class="footer-logo-wrapper">
+            <img src="logo.png" alt="Team Tamir MMA" class="footer-logo">
+        </div>
         <div class="social-links">
             <a href="https://www.instagram.com/itay_tamir.mma/" target="_blank" aria-label="Instagram">
                 <i class="fab fa-instagram"></i>
