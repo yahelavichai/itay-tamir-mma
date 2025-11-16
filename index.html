@@ -53,7 +53,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.03;
+            opacity: 0.08;
             pointer-events: none;
             z-index: -1;
             background-image: 
@@ -1724,14 +1724,20 @@
                 const elementTop = element.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
                 
-                if (elementTop < windowHeight - 100) {
+                if (elementTop < windowHeight - 50) {
                     element.classList.add('active');
                 }
             });
         };
 
+        // Run immediately and on scroll
+        revealOnScroll();
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
+        
+        // Also run after a small delay to ensure everything is ready
+        setTimeout(revealOnScroll, 100);
+        setTimeout(revealOnScroll, 500);
 
         // Form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
