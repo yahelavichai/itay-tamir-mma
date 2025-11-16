@@ -110,24 +110,21 @@
             height: 70px;
             width: auto;
             display: block;
-            filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.6)) 
-                    drop-shadow(0 0 40px rgba(255, 107, 53, 0.4))
-                    drop-shadow(0 0 60px rgba(255, 107, 53, 0.2));
+            filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.8)) 
+                    drop-shadow(0 0 40px rgba(255, 107, 53, 0.5));
             transition: all 0.3s ease;
         }
 
         .logo:hover {
-            filter: drop-shadow(0 0 25px rgba(255, 107, 53, 0.8)) 
-                    drop-shadow(0 0 50px rgba(255, 107, 53, 0.5))
-                    drop-shadow(0 0 80px rgba(255, 107, 53, 0.3));
+            filter: drop-shadow(0 0 25px rgba(255, 107, 53, 1)) 
+                    drop-shadow(0 0 50px rgba(255, 107, 53, 0.7));
+            transform: scale(1.05);
         }
 
         .nav-links {
             display: flex;
             gap: 35px;
             list-style: none;
-            direction: rtl;
-            flex-direction: row-reverse;
         }
 
         .nav-links a {
@@ -1024,8 +1021,8 @@
         .footer-logo {
             height: 80px;
             display: block;
-            filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.6)) 
-                    drop-shadow(0 0 40px rgba(255, 107, 53, 0.4));
+            filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.8)) 
+                    drop-shadow(0 0 40px rgba(255, 107, 53, 0.5));
         }
 
         .social-links {
@@ -1256,13 +1253,13 @@
                 <img src="logo.png" alt="Team Tamir MMA" class="logo">
             </div>
             <ul class="nav-links">
-                <li><a href="#home">ראשי</a></li>
-                <li><a href="#about">אודות</a></li>
-                <li><a href="#values">למה אני</a></li>
-                <li><a href="#training">אימונים</a></li>
-                <li><a href="#gallery">גלריה</a></li>
-                <li><a href="#testimonials">המלצות</a></li>
                 <li><a href="#contact">צור קשר</a></li>
+                <li><a href="#testimonials">המלצות</a></li>
+                <li><a href="#gallery">גלריה</a></li>
+                <li><a href="#training">אימונים</a></li>
+                <li><a href="#values">למה אני</a></li>
+                <li><a href="#about">אודות</a></li>
+                <li><a href="#home">ראשי</a></li>
             </ul>
             <button class="mobile-menu-btn" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
