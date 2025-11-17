@@ -68,16 +68,7 @@
             100% { transform: translate(60px, 60px); }
         }
 
-        #lightning-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.3;
-        }
+
 
         /* Navigation */
         .navbar {
@@ -1256,7 +1247,7 @@
 </head>
 <body>
     <div class="bg-pattern"></div>
-    <canvas id="lightning-canvas"></canvas>
+
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -1587,7 +1578,7 @@
                         <div class="contact-item-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <a href="mailto:etaitmir456@gmail.com">etaitmir456@gmail.com</a>
+                        <a href="/cdn-cgi/l/email-protection#5e3b2a3f372a33372c6a6b681e39333f3732703d3133"><span class="__cf_email__" data-cfemail="a7c2d3c6ced3caced5939291e7c0cac6cecb89c4c8ca">[email&#160;protected]</span></a>
                     </div>
                     <div class="contact-item">
                         <div class="contact-item-icon">
@@ -1656,7 +1647,7 @@
             <a href="tel:058-5670277" aria-label="Phone">
                 <i class="fas fa-phone"></i>
             </a>
-            <a href="mailto:etaitmir456@gmail.com" aria-label="Email">
+            <a href="/cdn-cgi/l/email-protection#741100151d00191d06404142341319151d185a171b19" aria-label="Email">
                 <i class="fas fa-envelope"></i>
             </a>
         </div>
@@ -1668,7 +1659,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile menu toggle
         function toggleMenu() {
             document.querySelector('.nav-links').classList.toggle('active');
@@ -1737,125 +1728,6 @@
         // Add loading animation
         window.addEventListener('load', () => {
             document.body.style.opacity = '1';
-        });
-
-        // Lightning Effect
-        const canvas = document.getElementById('lightning-canvas');
-        const ctx = canvas.getContext('2d');
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = document.body.scrollHeight;
-        }
-        
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        
-        class Lightning {
-            constructor() {
-                this.reset();
-            }
-            
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = 0;
-                this.segments = [];
-                this.alpha = 1;
-                this.lineWidth = Math.random() * 3 + 1;
-                this.generatePath();
-            }
-            
-            generatePath() {
-                let x = this.x;
-                let y = this.y;
-                this.segments = [{x, y}];
-                
-                while (y < canvas.height) {
-                    x += (Math.random() - 0.5) * 100;
-                    y += Math.random() * 30 + 10;
-                    this.segments.push({x, y});
-                    
-                    // Random branches
-                    if (Math.random() > 0.85) {
-                        this.createBranch(x, y);
-                    }
-                }
-            }
-            
-            createBranch(startX, startY) {
-                let x = startX;
-                let y = startY;
-                const branchLength = Math.random() * 100 + 50;
-                const direction = Math.random() > 0.5 ? 1 : -1;
-                
-                for (let i = 0; i < branchLength; i += 20) {
-                    x += direction * (Math.random() * 30 + 10);
-                    y += Math.random() * 20 + 5;
-                    this.segments.push({x, y, branch: true});
-                }
-            }
-            
-            draw() {
-                if (this.alpha <= 0) return;
-                
-                ctx.beginPath();
-                ctx.strokeStyle = `rgba(255, 107, 53, ${this.alpha})`;
-                ctx.lineWidth = this.lineWidth;
-                ctx.shadowColor = 'rgba(255, 107, 53, 0.8)';
-                ctx.shadowBlur = 20;
-                
-                ctx.moveTo(this.segments[0].x, this.segments[0].y);
-                
-                for (let i = 1; i < this.segments.length; i++) {
-                    if (!this.segments[i].branch) {
-                        ctx.lineTo(this.segments[i].x, this.segments[i].y);
-                    }
-                }
-                
-                ctx.stroke();
-                
-                // Draw glow
-                ctx.strokeStyle = `rgba(230, 57, 70, ${this.alpha * 0.5})`;
-                ctx.lineWidth = this.lineWidth * 3;
-                ctx.shadowBlur = 40;
-                ctx.stroke();
-                
-                this.alpha -= 0.02;
-            }
-        }
-        
-        let lightnings = [];
-        let lastLightning = 0;
-        
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Create new lightning randomly
-            const now = Date.now();
-            if (now - lastLightning > 3000 + Math.random() * 5000) {
-                lightnings.push(new Lightning());
-                lastLightning = now;
-                
-                // Sometimes create multiple
-                if (Math.random() > 0.7) {
-                    setTimeout(() => lightnings.push(new Lightning()), 100);
-                }
-            }
-            
-            // Draw and update lightnings
-            lightnings = lightnings.filter(l => l.alpha > 0);
-            lightnings.forEach(l => l.draw());
-            
-            requestAnimationFrame(animate);
-        }
-        
-        animate();
-        
-        // Update canvas height on scroll (for full page coverage)
-        window.addEventListener('scroll', () => {
-            if (canvas.height < document.body.scrollHeight) {
-                canvas.height = document.body.scrollHeight;
-            }
         });
     </script>
 </body>
