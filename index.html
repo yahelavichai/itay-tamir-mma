@@ -622,13 +622,24 @@
             gap: 40px;
         }
 
+        .training-grid:hover .training-card {
+            opacity: 0.7;
+            transform: scale(0.95);
+        }
+
+        .training-grid:hover .training-card:hover {
+            opacity: 1;
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
         .training-card {
             background: var(--primary-dark);
             padding: 50px;
             border-radius: 20px;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -742,6 +753,7 @@
         .gallery-item:hover {
             border-color: var(--accent-orange);
             transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.15);
         }
 
         .gallery-item img {
@@ -752,7 +764,7 @@
         }
 
         .gallery-item:hover img {
-            transform: scale(1.15);
+            transform: scale(1.08);
         }
 
         .gallery-overlay {
@@ -761,7 +773,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(255, 107, 53, 0.8), transparent);
+            background: linear-gradient(to top, rgba(255, 107, 53, 0.6), transparent);
             opacity: 0;
             transition: opacity 0.4s ease;
             display: flex;
@@ -809,12 +821,30 @@
             background-clip: text;
             opacity: 0.3;
             font-family: serif;
+            z-index: 0;
         }
 
         .testimonial-stars {
             color: var(--accent-yellow);
             margin-bottom: 15px;
             font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: var(--secondary-dark);
+            border-radius: 20px;
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--accent-orange);
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
         }
 
         .testimonial-text {
@@ -1840,8 +1870,8 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <h4>שלח אימייל</h4>
-                            <a href="/cdn-cgi/l/email-protection#187d6c79716c75716a2c2d2e587f75797174367b7775" class="tab-link email-link"><span class="__cf_email__" data-cfemail="bcd9c8ddd5c8d1d5ce88898afcdbd1ddd5d092dfd3d1">[email&#160;protected]</span></a>
-                            <p class="tab-hint">טיוטת מייל מוכנה תיפתח</p>
+                            <a href="#" id="email-link-btn" class="tab-link email-link">etaitmir456<span style="display:inline;">&#64;</span>gmail.com</a>
+                            <p class="tab-hint">לחץ לפתיחת תוכנת המייל</p>
                         </div>
                         <div class="tab-content" id="tab-instagram">
                             <div class="tab-icon-large instagram">
@@ -1879,7 +1909,7 @@
                 </div>
                 <div class="contact-form reveal">
                     <div style="width:100%;height:500px;" data-fillout-id="o4yUXGHAcsus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
-                    <script src="https://server.fillout.com/embed/v1/"></script>
+                    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://server.fillout.com/embed/v1/"></script>
                 </div>
             </div>
         </div>
@@ -1894,7 +1924,14 @@
             <a href="https://www.instagram.com/itay_tamir.mma/" target="_blank" aria-label="Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://wa.me/972585670277" target="_blank"velope"></i>
+            <a href="https://wa.me/972585670277" target="_blank" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="tel:058-5670277" aria-label="Phone">
+                <i class="fas fa-phone"></i>
+            </a>
+            <a href="#" onclick="window.location.href='mai'+'lto:'+'etai'+'tmir'+'456'+'@'+'gma'+'il.com'; return false;" aria-label="Email">
+                <i class="fas fa-envelope"></i>
             </a>
         </div>
         <p class="footer-text">© 2024 Team Tamir MMA | כל הזכויות שמורות | גבעתיים, ישראל</p>
@@ -1979,7 +2016,6 @@
 
         // Click outside tabs to reset to default
         document.querySelector('.contact-card').addEventListener('click', (e) => {
-            // Don't reset if clicking on a link or button
             if (e.target.closest('.tab-btn') === null && 
                 e.target.closest('.tab-content') === null && 
                 e.target.closest('a') === null) {
@@ -1987,6 +2023,12 @@
                 tabContents.forEach(content => content.classList.remove('active'));
                 document.getElementById('tab-default').classList.add('active');
             }
+        });
+
+        // Email link handler (to avoid Cloudflare encryption)
+        document.getElementById('email-link-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'mai' + 'lto:' + 'etai' + 'tmir' + '456' + '@' + 'gma' + 'il.com';
         });
 
         // Add loading animation
