@@ -1840,7 +1840,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <h4>שלח אימייל</h4>
-                            <a href="mailto:etaitmir456@gmail.com" class="tab-link email-link">etaitmir456@gmail.com</a>
+                            <a href="/cdn-cgi/l/email-protection#187d6c79716c75716a2c2d2e587f75797174367b7775" class="tab-link email-link"><span class="__cf_email__" data-cfemail="bcd9c8ddd5c8d1d5ce88898afcdbd1ddd5d092dfd3d1">[email&#160;protected]</span></a>
                             <p class="tab-hint">טיוטת מייל מוכנה תיפתח</p>
                         </div>
                         <div class="tab-content" id="tab-instagram">
@@ -1979,7 +1979,10 @@
 
         // Click outside tabs to reset to default
         document.querySelector('.contact-card').addEventListener('click', (e) => {
-            if (e.target.closest('.tab-btn') === null && e.target.closest('.tab-content') === null) {
+            // Don't reset if clicking on a link or button
+            if (e.target.closest('.tab-btn') === null && 
+                e.target.closest('.tab-content') === null && 
+                e.target.closest('a') === null) {
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
                 document.getElementById('tab-default').classList.add('active');
@@ -1993,11 +1996,3 @@
     </script>
 </body>
 </html>
-st('.tab-content') === null) {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                document.getElementById('tab-default').classList.add('active');
-            }
-        });
-
-        // Add loa
