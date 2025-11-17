@@ -753,7 +753,6 @@
         .gallery-item:hover {
             border-color: var(--accent-orange);
             transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.15);
         }
 
         .gallery-item img {
@@ -764,7 +763,7 @@
         }
 
         .gallery-item:hover img {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
 
         .gallery-overlay {
@@ -773,7 +772,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(255, 107, 53, 0.6), transparent);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
             opacity: 0;
             transition: opacity 0.4s ease;
             display: flex;
@@ -812,16 +811,17 @@
 
         .testimonial-quote {
             position: absolute;
-            top: 20px;
-            right: 25px;
-            font-size: 4rem;
+            top: -10px;
+            left: 25px;
+            font-size: 5rem;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            opacity: 0.3;
+            opacity: 0.15;
             font-family: serif;
             z-index: 0;
+            pointer-events: none;
         }
 
         .testimonial-stars {
@@ -1451,6 +1451,8 @@
             border-radius: 25px;
             transition: all 0.3s ease;
             margin-bottom: 10px;
+            border: none;
+            cursor: pointer;
         }
 
         .tab-link:hover {
@@ -1564,7 +1566,7 @@
                         <div class="hero-stat-label">אלוף ישראל</div>
                     </div>
                     <div class="hero-stat">
-                        <div class="hero-stat-number">100+</div>
+                        <div class="hero-stat-number">50+</div>
                         <div class="hero-stat-label">תלמידים</div>
                     </div>
                 </div>
@@ -1869,9 +1871,9 @@
                             <div class="tab-icon-large email">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <h4>שלח אימייל</h4>
-                            <a href="#" id="email-link-btn" class="tab-link email-link">etaitmir456<span style="display:inline;">&#64;</span>gmail.com</a>
-                            <p class="tab-hint">לחץ לפתיחת תוכנת המייל</p>
+                            <h4>העתק כתובת מייל</h4>
+                            <button id="copy-email-btn" class="tab-link email-link">etaitmir456<span style="display:inline;">&#64;</span>gmail.com</button>
+                            <p class="tab-hint" id="copy-hint">לחץ להעתקה ללוח</p>
                         </div>
                         <div class="tab-content" id="tab-instagram">
                             <div class="tab-icon-large instagram">
@@ -2025,10 +2027,20 @@
             }
         });
 
-        // Email link handler (to avoid Cloudflare encryption)
-        document.getElementById('email-link-btn').addEventListener('click', function(e) {
+        // Email copy handler
+        document.getElementById('copy-email-btn').addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = 'mai' + 'lto:' + 'etai' + 'tmir' + '456' + '@' + 'gma' + 'il.com';
+            const email = 'etai' + 'tmir' + '456' + '@' + 'gma' + 'il.com';
+            navigator.clipboard.writeText(email).then(() => {
+                document.getElementById('copy-hint').textContent = '✓ הועתק ללוח!';
+                this.style.background = '#25D366';
+                this.style.color = 'white';
+                setTimeout(() => {
+                    document.getElementById('copy-hint').textContent = 'לחץ להעתקה ללוח';
+                    this.style.background = '';
+                    this.style.color = '';
+                }, 2000);
+            });
         });
 
         // Add loading animation
