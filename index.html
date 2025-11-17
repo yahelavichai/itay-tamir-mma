@@ -117,7 +117,23 @@
             100% { transform: translate(60px, 60px); }
         }
 
+        /* Urgency Banner */
+        .urgency-banner {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            padding: 12px 20px;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1001;
+            animation: pulse-banner 2s ease-in-out infinite;
+        }
 
+        @keyframes pulse-banner {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
 
         /* Navigation */
         .navbar {
@@ -410,6 +426,32 @@
             border-color: var(--accent-orange);
             color: var(--accent-orange);
             transform: translateY(-3px);
+        }
+
+        .hero-trust-badges {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+
+        .trust-badge {
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            color: var(--text-light-gray);
+            font-weight: 500;
+        }
+
+        .cta-subtext {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: var(--accent-orange);
+            font-weight: 500;
+            animation: fadeInUp 0.8s ease 1.2s both;
         }
 
         .hero-video-wrapper {
@@ -1270,6 +1312,88 @@
             margin: 0 10px;
         }
 
+        /* FAQ Section */
+        .faq {
+            background: var(--primary-dark);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .faq-item {
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-orange);
+        }
+
+        .faq-question i {
+            color: var(--accent-orange);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 25px 20px;
+        }
+
+        .faq-answer p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Urgency Note */
+        .urgency-note {
+            background: rgba(230, 57, 70, 0.1);
+            border: 1px solid var(--accent-red);
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block;
+            color: var(--accent-red);
+            font-weight: 600;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .urgency-note i {
+            margin-left: 8px;
+        }
+
         /* WhatsApp Float Button */
         .whatsapp-float {
             position: fixed;
@@ -1400,6 +1524,20 @@
         }
 
         @media (max-width: 768px) {
+            .urgency-banner {
+                font-size: 0.85rem;
+                padding: 10px 15px;
+            }
+
+            .hero-trust-badges {
+                justify-content: center;
+            }
+
+            .trust-badge {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
             .nav-links {
                 display: none;
                 position: absolute;
@@ -1709,6 +1847,11 @@
 
 
     <!-- Navigation -->
+    <!-- Urgency Banner -->
+    <div class="urgency-banner">
+        <span>🔥 מבצע מיוחד: אימון ניסיון ראשון חינם - השבוע בלבד!</span>
+    </div>
+
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-wrapper">
@@ -1716,11 +1859,11 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#contact">צור קשר</a></li>
+                <li><a href="#faq">שאלות נפוצות</a></li>
                 <li><a href="#testimonials">המלצות</a></li>
                 <li><a href="#gallery">גלריה</a></li>
                 <li><a href="schedule.html">לו״ז אימונים</a></li>
                 <li><a href="#training">אימונים</a></li>
-                <li><a href="#values">למה אני</a></li>
                 <li><a href="#about">אודות</a></li>
                 <li><a href="#home">ראשי</a></li>
             </ul>
@@ -1738,23 +1881,29 @@
         </video>
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge">🏆 3 פעמים אלוף ישראל</div>
-                <h1 class="hero-title">איתי <span>תמיר</span></h1>
-                <p class="hero-subtitle">בית ספר לאומנויות לחימה משולבות</p>
+                <div class="hero-badge">🎯 אימון אישי עם אלוף ישראל 3 פעמים</div>
+                <h1 class="hero-title">הפוך <span>לגרסה החזקה</span> של עצמך</h1>
+                <p class="hero-subtitle">למד הגנה עצמית אמיתית וכושר קרבי מקצועי</p>
                 <p class="hero-description">
-                    הצטרף לאלוף ישראל ב-MMA ולמד טכניקות לחימה מקצועיות במסגרת אישית ובטוחה. 
-                    מתאים לכל הרמות - ממתחילים ועד מתקדמים.
+                    הצטרף לאימונים אישיים או קבוצתיים בסביבה בטוחה ותומכת. 
+                    מתאים לכל הרמות - מתחילים ומתקדמים. תוצאות מהאימון הראשון.
                 </p>
+                <div class="hero-trust-badges">
+                    <span class="trust-badge">✅ 50+ מתאמנים פעילים</span>
+                    <span class="trust-badge">⭐ 7+ שנות ניסיון</span>
+                    <span class="trust-badge">🏆 3x אלוף ישראל</span>
+                </div>
                 <div class="cta-buttons">
                     <a href="#contact" class="cta-button cta-primary">
-                        <i class="fas fa-rocket"></i>
-                        התחל עכשיו
+                        <i class="fas fa-gift"></i>
+                        קבל אימון ניסיון חינם
                     </a>
                     <a href="#about" class="cta-button cta-secondary">
                         <i class="fas fa-info-circle"></i>
                         למד עוד
                     </a>
                 </div>
+                <p class="cta-subtext">📞 נחזור אליך תוך 3 שעות</p>
             </div>
             <div class="hero-video-wrapper">
                 <div class="video-decoration video-decoration-1"></div>
@@ -2004,12 +2153,83 @@
     </section>
 
     <!-- Contact Section -->
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">שאלות נפוצות</div>
+                <h2 class="section-title">יש לך <span>שאלות?</span></h2>
+                <p class="section-subtitle">הנה התשובות לשאלות הנפוצות ביותר</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>האם האימונים מתאימים למתחילים בלי ניסיון?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>בהחלט! רוב המתאמנים שלנו התחילו בלי שום ניסיון קודם. האימונים מותאמים אישית לרמה שלך, ואנחנו מתקדמים בקצב שנוח לך. הסביבה תומכת ובטוחה.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>מה צריך להביא לאימון?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>בגדי ספורט נוחים, מגבת ובקבוק מים. ציוד אימון (כפפות, מגיני שוקיים) זמין להשאלה במקום לאימונים הראשונים.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>האם יש סכנה להיפצע באימונים?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>הבטיחות היא בראש סדר העדיפויות שלנו. כל האימונים מבוקרים ומותאמים לרמה שלך. אנחנו מלמדים טכניקה נכונה לפני כל דבר אחר, ולא עושים ספארינג מלא בהתחלה.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>כמה פעמים בשבוע מומלץ להתאמן?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>למתחילים, 2-3 פעמים בשבוע זה אידיאלי. עם הזמן אפשר להגדיל את התדירות. גם אימון אחד בשבוע יביא תוצאות - העיקר להתחיל!</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>מה ההבדל בין אימון פרטי לקבוצתי?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>אימון פרטי מציע תשומת לב מלאה והתאמה מושלמת לצרכים שלך. אימון קבוצתי מציע אווירה חברתית, תרגול עם פרטנרים שונים, ומחיר נגיש יותר. שניהם יעילים!</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>האם יש אימון ניסיון?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>כן! אנחנו מציעים אימון ניסיון ראשון חינם כדי שתוכל להכיר את הסגנון, האווירה, ולהחליט אם זה מתאים לך. ללא התחייבות.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">התחל היום</div>
-                <h2 class="section-title">בואו <span>נתחיל</span></h2>
-                <p class="section-subtitle">מלא את הפרטים ונחזור אליך בהקדם</p>
+                <h2 class="section-title">קבל אימון <span>ניסיון חינם</span></h2>
+                <p class="section-subtitle">השאר פרטים ונחזור אליך תוך 3 שעות עם כל המידע</p>
+                <div class="urgency-note">
+                    <i class="fas fa-clock"></i>
+                    <span>🔥 נשארו רק 5 מקומות לקבוצה החדשה שנפתחת השבוע!</span>
+                </div>
             </div>
             <div class="contact-wrapper">
                 <div class="contact-card reveal">
@@ -2304,6 +2524,22 @@
                 closeLightbox();
             }
         });
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
     </script>
 </body>
 </html>
