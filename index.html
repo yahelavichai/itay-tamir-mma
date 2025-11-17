@@ -4,8 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="איתי תמיר - מאמן MMA מקצועי בגבעתיים. 3 פעמים אלוף ישראל. אימונים פרטיים וקבוצתיים לכל הרמות והגילאים.">
-    <meta name="keywords" content="MMA, אומנויות לחימה, איתי תמיר, גבעתיים, אימון כושר, הגנה עצמית">
+    <meta name="keywords" content="MMA, אומנויות לחימה, איתי תמיר, גבעתיים, אימון כושר, הגנה עצמית, קרב מגע, ג'יו ג'יטסו, אגרוף תאילנדי">
+    <meta name="author" content="איתי תמיר">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Team Tamir MMA | איתי תמיר - מאמן MMA מקצועי">
+    <meta property="og:description" content="הצטרף לאלוף ישראל ב-MMA ולמד טכניקות לחימה מקצועיות. אימונים פרטיים וקבוצתיים בגבעתיים.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="he_IL">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Team Tamir MMA | איתי תמיר">
+    <meta name="twitter:description" content="מאמן MMA מקצועי - 3 פעמים אלוף ישראל. אימונים בגבעתיים.">
     <title>Team Tamir MMA | איתי תמיר - מאמן MMA מקצועי</title>
+    
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SportsActivityLocation",
+        "name": "Team Tamir MMA",
+        "description": "בית ספר לאומנויות לחימה משולבות בהנהלת איתי תמיר, 3 פעמים אלוף ישראל ב-MMA",
+        "url": "https://yahelavichai.github.io/itay-tamir-mma/",
+        "telephone": "+972-58-567-0277",
+        "email": "etaitmir456@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "גבעתיים",
+            "addressCountry": "IL"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "32.0714",
+            "longitude": "34.8106"
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "08:00",
+            "closes": "21:00"
+        },
+        "sameAs": [
+            "https://www.instagram.com/itay_tamir.mma/"
+        ],
+        "founder": {
+            "@type": "Person",
+            "name": "איתי תמיר",
+            "jobTitle": "מאמן MMA מקצועי",
+            "description": "3 פעמים אלוף ישראל ב-MMA עם 7+ שנות ניסיון"
+        },
+        "sport": "Mixed Martial Arts",
+        "priceRange": "₪₪"
+    }
+    </script>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -834,6 +883,53 @@
             transform: scale(1.05);
         }
 
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: none;
+            border: none;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-orange);
+            transform: scale(1.2);
+        }
+
+        .gallery-item {
+            cursor: pointer;
+        }
+
         .gallery-overlay {
             position: absolute;
             top: 0;
@@ -1622,6 +1718,7 @@
                 <li><a href="#contact">צור קשר</a></li>
                 <li><a href="#testimonials">המלצות</a></li>
                 <li><a href="#gallery">גלריה</a></li>
+                <li><a href="schedule.html">לו״ז אימונים</a></li>
                 <li><a href="#training">אימונים</a></li>
                 <li><a href="#values">למה אני</a></li>
                 <li><a href="#about">אודות</a></li>
@@ -1831,7 +1928,7 @@
                 <p class="section-subtitle">צפה באימונים, תחרויות והישגים</p>
             </div>
             <div class="gallery-grid" style="grid-template-columns: 1fr;">
-                <div class="gallery-item reveal" style="aspect-ratio: auto; max-height: 500px;">
+                <div class="gallery-item reveal" style="aspect-ratio: auto; max-height: 500px;" onclick="openLightbox('gallery1.jpg')">
                     <img src="gallery1.jpg" alt="קבוצת Team Tamir MMA">
                     <div class="gallery-overlay">
                         <span>הקבוצה שלנו</span>
@@ -2040,6 +2137,12 @@
         </div>
     </footer>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img src="" alt="תמונה מוגדלת" id="lightbox-img">
+    </div>
+
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/972585670277" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
@@ -2187,6 +2290,32 @@
                     this.title = 'הפעל סאונד';
                     isMuted = true;
                 }
+            }
+        });
+
+        // Lightbox Functions
+        function openLightbox(imageSrc) {
+            document.getElementById('lightbox-img').src = imageSrc;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close lightbox on click outside image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
             }
         });
     </script>
