@@ -1841,6 +1841,25 @@
             transform: scale(1.1);
         }
     </style>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '{910713231338543}');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+    <img height="1" width="1" style="display:none" 
+        src="https://www.facebook.com/tr?id={910713231338543}&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
 </head>
 <body>
     <div class="bg-pattern"></div>
@@ -1856,7 +1875,6 @@
                 <li><a href="#contact">צור קשר</a></li>
                 <li><a href="#faq">שאלות נפוצות</a></li>
                 <li><a href="#testimonials">המלצות</a></li>
-                <li><a href="#gallery">גלריה</a></li>
                 <li><a href="/schedule">לו״ז אימונים</a></li>
                 <li><a href="#training">אימונים</a></li>
                 <li><a href="#about">אודות</a></li>
@@ -2041,28 +2059,6 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">תמונות</div>
-                <h2 class="section-title">גלריה <span>ווידאו</span></h2>
-                <p class="section-subtitle">צפה באימונים, תחרויות והישגים</p>
-            </div>
-            <div class="gallery-grid" style="grid-template-columns: 1fr;">
-                <div class="gallery-item reveal" style="aspect-ratio: auto; max-height: 500px;" onclick="openLightbox('gallery1.jpg')">
-                    <img src="gallery1.jpg" alt="קבוצת Team Tamir MMA">
-                    <div class="gallery-overlay">
-                        <span>הקבוצה שלנו</span>
-                    </div>
-                </div>
-            </div>
-            <p style="text-align: center; color: var(--text-gray); margin-top: 30px; font-size: 1.1rem;">
-                עוד תמונות בקרוב... 📸
-            </p>
-        </div>
-    </section>
-
     <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
         <div class="container">
@@ -2211,7 +2207,7 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">התחל היום</div>
-                <h2 class="section-title">קבל אימון <span>ניסיון חינם</span></h2>
+                <h2 class="section-title">לקביעת <span>אימון ניסיון</span></h2>
                 <p class="section-subtitle">השאר פרטים ונחזור אליך בהקדם</p>
             </div>
             <div class="contact-wrapper">
