@@ -82,7 +82,11 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+        html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+        }
         html {
             scroll-behavior: smooth;
         }
@@ -93,8 +97,17 @@
             color: var(--text-white);
             line-height: 1.7;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
         }
 
+        footer {
+            flex-shrink: 0;
+        }
         /* Animated Background Pattern */
         .bg-pattern {
             position: fixed;
@@ -1106,10 +1119,12 @@
 
         .contact-wrapper {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 80px;
+            /* This is the key change: 1fr means one single column */
+            grid-template-columns: 1fr; 
+            gap: 40px; /* Reduced gap for a vertical layout */
             position: relative;
             z-index: 10;
+            justify-items: center; /* Centers the card and form horizontally */
         }
 
         .contact-info h3 {
@@ -1163,6 +1178,8 @@
         }
 
         .contact-form {
+            width: 100%;
+            max-width: 600px;
             background: var(--secondary-dark);
             padding: 50px;
             border-radius: 25px;
@@ -1600,7 +1617,7 @@
         /* Contact Card from UIverse */
         .contact-card {
             width: 100%;
-            max-width: 350px;
+            max-width: 600px;
             background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
             border-radius: 20px;
             padding: 30px;
@@ -1861,6 +1878,7 @@
     </noscript>
     <!-- End Facebook Pixel Code -->
 </head>
+
 <body>
     <div class="bg-pattern"></div>
 
@@ -1885,249 +1903,100 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <!-- Background Video -->
-        <video class="hero-bg-video" autoplay muted loop playsinline>
-            <source src="hero-bg.mp4" type="video/mp4">
-        </video>
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">🏆 3 פעמים אלוף ישראל</div>
-                <h1 class="hero-title">הפוך <span>לגרסה החזקה</span> של עצמך</h1>
-                <p class="hero-subtitle">בית ספר לאומנויות לחימה משולבות</p>
-                <p class="hero-description">
-                    הצטרף לאלוף ישראל ב-MMA ולמד טכניקות לחימה מקצועיות במסגרת אישית ובטוחה. 
-                    מתאים לכל הרמות - ממתחילים ועד מתקדמים.
-                </p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="cta-button cta-primary">
-                        לקביעת אימון ניסיון
-                    </a>
-                    <a href="#about" class="cta-button cta-secondary">
-                        למד עוד
-                    </a>
-                </div>
-            </div>
-            <div class="hero-video-wrapper">
-                <div class="video-decoration video-decoration-1"></div>
-                <div class="video-decoration video-decoration-2"></div>
-                <div class="hero-video-frame">
-                    <iframe 
-                        id="youtube-player"
-                        src="https://www.youtube.com/embed/9-M6DwI-7Vo?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=9-M6DwI-7Vo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-                        allow="autoplay; encrypted-media"
-                        allowfullscreen>
-                    </iframe>
-                    <button class="sound-toggle muted" id="sound-toggle" title="הפעל סאונד">
-                        <i class="fas fa-volume-mute"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
+    <main>
+        <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">הסיפור שלי</div>
-                <h2 class="section-title">הכירו את <span>איתי</span></h2>
-                <p class="section-subtitle">מאמן MMA מקצועי עם ניסיון תחרותי עשיר וגישה אישית לכל מתאמן</p>
+                <div class="section-badge">התחל היום</div>
+                <h2 class="section-title">לקביעת <span>אימון ניסיון</span></h2>
+                <p class="section-subtitle">השאר פרטים ונחזור אליך בהקדם</p>
             </div>
-            <div class="about-content reveal">
-                <div class="about-image">
-                    <img src="itay-profile.jpg" alt="איתי תמיר - מאמן MMA">
-                    <div class="about-badge">
-                        <span class="number">7+</span>
-                        שנות ניסיון
+            <div class="contact-wrapper">
+                <div class="contact-form reveal">
+                    <div style="width:100%;height:500px;" data-fillout-id="o4yUXGHAcsus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+                    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://server.fillout.com/embed/v1/"></script>
+                </div>
+                <div class="contact-card reveal">
+                    <div class="card-image">
+                        <div class="user-icon">
+                            <img src="itay-profile.jpg" alt="איתי תמיר">
+                        </div>
+                        <p class="user-name">איתי תמיר</p>
+                        <p class="user-title">מאמן MMA מקצועי</p>
+                    </div>
+                    
+                    <!-- Tab Content Area -->
+                    <div class="card-content-area">
+                        <div class="tab-content active" id="tab-default">
+                            <div class="default-content">
+                                <p>🏆 3 פעמים אלוף ישראל</p>
+                                <p>💪 7+ שנות ניסיון</p>
+                                <p>📍 גבעתיים, ישראל</p>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="tab-phone">
+                            <div class="tab-icon-large">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h4>התקשר עכשיו</h4>
+                            <a href="tel:058-5670277" class="tab-link">058-5670277</a>
+                            <p class="tab-hint">לחץ להתקשר ישירות</p>
+                        </div>
+                        <div class="tab-content" id="tab-whatsapp">
+                            <div class="tab-icon-large whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h4>שלח הודעה בוואטסאפ</h4>
+                            <a href="https://wa.me/972585670277?text=היי%20איתי,%20אני%20מעוניין%20לשמוע%20עוד%20על%20האימונים" target="_blank" class="tab-link whatsapp-link">פתח WhatsApp</a>
+                            <p class="tab-hint">הודעה מוכנה נשלחת אוטומטית</p>
+                        </div>
+                        <div class="tab-content" id="tab-email">
+                            <div class="tab-icon-large email">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4>העתק כתובת מייל</h4>
+                            <button id="copy-email-btn" class="tab-link email-link">etaitmir456<span style="display:inline;">&#64;</span>gmail.com</button>
+                            <p class="tab-hint" id="copy-hint">לחץ להעתקה ללוח</p>
+                        </div>
+                        <div class="tab-content" id="tab-instagram">
+                            <div class="tab-icon-large instagram">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <h4>עקוב באינסטגרם</h4>
+                            <a href="https://www.instagram.com/itay_tamir.mma/" target="_blank" class="tab-link instagram-link" style="direction: ltr;">@itay_tamir.mma</a>
+                            <p class="tab-hint">סרטונים, תמונות ועדכונים</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab Navigation -->
+                    <div class="social-media-card">
+                        <button class="tab-btn" data-tab="phone" title="טלפון">
+                            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path>
+                            </svg>
+                        </button>
+                        <button class="tab-btn" data-tab="whatsapp" title="WhatsApp">
+                            <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path>
+                            </svg>
+                        </button>
+                        <button class="tab-btn" data-tab="email" title="אימייל">
+                            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"></path>
+                            </svg>
+                        </button>
+                        <button class="tab-btn" data-tab="instagram" title="Instagram">
+                            <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="about-text">
-                    <h3>הראשון בישראל שקיבל הכרה מהצבא כספורטאי מצטיין ב-MMA</h3>
-                    <p>
-                        איתי תמיר הוא מתאמן ומדריך בעל 7 שנות ניסיון באומנויות לחימה משולבות. 
-                        כשלוש פעמים אלוף ישראל ב-MMA ואלוף ישראל לשעבר בתחומים נוספים, 
-                        איתי מביא עמו ניסיון תחרותי עשיר וידע מקצועי מעמיק.
-                    </p>
-                    <p>
-                        בית הספר שלנו מעניק מסגרת ערכית ובטוחה עם מודל לחיקוי אמיתי. 
-                        אימון מקצועי ברמה הגבוהה ביותר בישראל, המותאם אישית לכל מתאמן.
-                    </p>
-                    <div class="about-features">
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>גישה אישית ומותאמת</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>ניסיון תחרותי מוכח</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>מסגרת בטוחה וערכית</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>מתאים לכל הרמות</span>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
-
-    <!-- Values Section -->
-    <section class="values" id="values">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">היתרונות</div>
-                <h2 class="section-title">למה להתאמן <span>איתי</span>?</h2>
-                <p class="section-subtitle">שלושה תחומים מרכזיים שתפתח באימונים שלנו</p>
-            </div>
-            <div class="values-grid">
-                <div class="value-card reveal">
-                    <div class="value-icon">
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <h3>כושר גופני</h3>
-                    <p>חיזוק שרירים ושיפור סיבולת, שיפור קואורדינציה וגמישות, תחושה אגרסיבית והכנסה ביומיום</p>
-                </div>
-                <div class="value-card reveal">
-                    <div class="value-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>הגנה עצמית</h3>
-                    <p>טכניקות יעילות ומעשיות, ביטחון עצמי במצבים מאתגרים, שליטה ואחריות על הכוח</p>
-                </div>
-                <div class="value-card reveal">
-                    <div class="value-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>מסגרת תחרותית</h3>
-                    <p>אפשרות להתקדם לתחרויות מקצועיות, הצבת מטרות והתמודדות עם אתגרים, פיתוח משמעת והתמדה</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Training Types -->
-    <section class="training" id="training">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">השירותים</div>
-                <h2 class="section-title">סוגי <span>אימונים</span></h2>
-                <p class="section-subtitle">בחר את המסלול המתאים לך</p>
-            </div>
-            <div class="training-grid">
-                <div class="training-card reveal">
-                    <div class="training-card-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <h3>אימון פרטי</h3>
-                    <ul>
-                        <li>תשומת לב אישית מלאה</li>
-                        <li>תוכנית מותאמת אישית</li>
-                        <li>התקדמות מהירה ויעילה</li>
-                        <li>גמישות מלאה בשעות</li>
-                        <li>מתאים לכל רמה וגיל</li>
-                    </ul>
-                    <div class="training-price">
-                        <div class="training-price-label">החל מ-</div>
-                        <a href="contact.html" class="training-cta-btn">צור קשר לפרטים</a>
-                    </div>
-                </div>
-                <div class="training-card reveal">
-                    <div class="training-card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>אימון קבוצתי</h3>
-                    <ul>
-                        <li>אווירה חברתית ומוטיבציה</li>
-                        <li>למידה מעמיתים לקבוצה</li>
-                        <li>תרגול עם פרטנרים שונים</li>
-                        <li>מחיר נגיש יותר</li>
-                        <li>מספר פעמים בשבוע</li>
-                    </ul>
-                    <div class="training-price">
-                        <div class="training-price-label">החל מ-</div>
-                        <a href="contact.html" class="training-cta-btn">צור קשר לפרטים</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Contact Section -->
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">שאלות נפוצות</div>
-                <h2 class="section-title">יש לך <span>שאלות?</span></h2>
-                <p class="section-subtitle">הנה התשובות לשאלות הנפוצות ביותר</p>
-            </div>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>האם האימונים מתאימים למתחילים בלי ניסיון?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>בהחלט! רוב המתאמנים שלנו התחילו בלי שום ניסיון קודם. האימונים מותאמים אישית לרמה שלך, ואנחנו מתקדמים בקצב שנוח לך. הסביבה תומכת ובטוחה.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>מה צריך להביא לאימון?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>בגדי ספורט נוחים, מגבת ובקבוק מים. ציוד אימון (כפפות, מגיני שוקיים) זמין להשאלה במקום לאימונים הראשונים.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>האם יש סכנה להיפצע באימונים?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>הבטיחות היא בראש סדר העדיפויות שלנו. כל האימונים מבוקרים ומותאמים לרמה שלך. אנחנו מלמדים טכניקה נכונה לפני כל דבר אחר, ולא עושים ספארינג מלא בהתחלה.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>כמה פעמים בשבוע מומלץ להתאמן?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>למתחילים, 2-3 פעמים בשבוע זה אידיאלי. עם הזמן אפשר להגדיל את התדירות. גם אימון אחד בשבוע יביא תוצאות - העיקר להתחיל!</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>מה ההבדל בין אימון פרטי לקבוצתי?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>אימון פרטי מציע תשומת לב מלאה והתאמה מושלמת לצרכים שלך. אימון קבוצתי מציע אווירה חברתית, תרגול עם פרטנרים שונים, ומחיר נגיש יותר. שניהם יעילים!</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>האם יש אימון ניסיון?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>כן! אנחנו מציעים אימון ניסיון ראשון בעלות סימלית כדי שתוכל להכיר את הסגנון, האווירה, ולהחליט אם זה מתאים לך. ללא התחייבות.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   
+    </main>
 
     <!-- Footer -->
     <footer>

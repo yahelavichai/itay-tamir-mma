@@ -82,7 +82,11 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+        html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+        }
         html {
             scroll-behavior: smooth;
         }
@@ -93,8 +97,263 @@
             color: var(--text-white);
             line-height: 1.7;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
         }
 
+        footer {
+            flex-shrink: 0;
+        }
+/* Main Content */
+        .main-content {
+            padding: 120px 20px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-badge {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--accent-orange);
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .page-title span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+        }
+
+        /* Schedule Grid */
+        .schedule-container {
+            background: var(--secondary-dark);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            overflow-x: auto;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2px;
+            min-width: 900px;
+        }
+
+        .schedule-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .time-slot {
+            background: rgba(255, 107, 53, 0.1);
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--accent-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .schedule-cell {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            min-height: 100px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .schedule-cell:hover {
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .session {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .session:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.5);
+        }
+
+        .session-type {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .session-info {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .session.private {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .session.private:hover {
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .empty-slot {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            text-align: center;
+            opacity: 0.5;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+        }
+
+        .legend-color.group {
+            background: var(--gradient-primary);
+        }
+
+        .legend-color.private {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .legend-text {
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            background: var(--secondary-dark);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .cta-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .cta-text {
+            color: var(--text-gray);
+            margin-bottom: 25px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Notes */
+        .notes {
+            margin-top: 40px;
+            padding: 25px;
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .notes h3 {
+            color: var(--accent-orange);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .notes ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .notes li {
+            color: var(--text-gray);
+            padding: 8px 0;
+            padding-right: 25px;
+            position: relative;
+        }
+
+        .notes li::before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
         /* Animated Background Pattern */
         .bg-pattern {
             position: fixed;
@@ -1106,10 +1365,12 @@
 
         .contact-wrapper {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 80px;
+            /* This is the key change: 1fr means one single column */
+            grid-template-columns: 1fr; 
+            gap: 40px; /* Reduced gap for a vertical layout */
             position: relative;
             z-index: 10;
+            justify-items: center; /* Centers the card and form horizontally */
         }
 
         .contact-info h3 {
@@ -1163,6 +1424,8 @@
         }
 
         .contact-form {
+            width: 100%;
+            max-width: 600px;
             background: var(--secondary-dark);
             padding: 50px;
             border-radius: 25px;
@@ -1600,7 +1863,7 @@
         /* Contact Card from UIverse */
         .contact-card {
             width: 100%;
-            max-width: 350px;
+            max-width: 600px;
             background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
             border-radius: 20px;
             padding: 30px;
@@ -1861,6 +2124,7 @@
     </noscript>
     <!-- End Facebook Pixel Code -->
 </head>
+
 <body>
     <div class="bg-pattern"></div>
 
@@ -1885,249 +2149,208 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <!-- Background Video -->
-        <video class="hero-bg-video" autoplay muted loop playsinline>
-            <source src="hero-bg.mp4" type="video/mp4">
-        </video>
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">🏆 3 פעמים אלוף ישראל</div>
-                <h1 class="hero-title">הפוך <span>לגרסה החזקה</span> של עצמך</h1>
-                <p class="hero-subtitle">בית ספר לאומנויות לחימה משולבות</p>
-                <p class="hero-description">
-                    הצטרף לאלוף ישראל ב-MMA ולמד טכניקות לחימה מקצועיות במסגרת אישית ובטוחה. 
-                    מתאים לכל הרמות - ממתחילים ועד מתקדמים.
-                </p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="cta-button cta-primary">
-                        לקביעת אימון ניסיון
-                    </a>
-                    <a href="#about" class="cta-button cta-secondary">
-                        למד עוד
-                    </a>
+    <main>
+       <div class="page-header">
+            <div class="page-badge">📅 לוח זמנים</div>
+            <h1 class="page-title">לו״ז <span>אימונים שבועי</span></h1>
+            <p class="page-subtitle">בחר את הזמן המתאים לך והצטרף לאימון</p>
+        </div>
+
+        <div class="schedule-container">
+            <div class="schedule-grid">
+                <!-- Headers -->
+                <div class="schedule-header">ראשון</div>
+                <div class="schedule-header">שני</div>
+                <div class="schedule-header">שלישי</div>
+                <div class="schedule-header">רביעי</div>
+                <div class="schedule-header">חמישי</div>
+                <div class="schedule-header">שישי</div>
+
+                <!-- Row 1 -->
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">ו׳-ח׳</div>
+                        <div class="session-info">16:00-17:15</div>
+                        <div class="session-info">מרום נווה</div>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-video-wrapper">
-                <div class="video-decoration video-decoration-1"></div>
-                <div class="video-decoration video-decoration-2"></div>
-                <div class="hero-video-frame">
-                    <iframe 
-                        id="youtube-player"
-                        src="https://www.youtube.com/embed/9-M6DwI-7Vo?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=9-M6DwI-7Vo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-                        allow="autoplay; encrypted-media"
-                        allowfullscreen>
-                    </iframe>
-                    <button class="sound-toggle muted" id="sound-toggle" title="הפעל סאונד">
-                        <i class="fas fa-volume-mute"></i>
-                    </button>
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">ד׳-ו׳</div>
+                        <div class="session-info">16:00-16:45</div>
+                        <div class="session-info">גבעתיים</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">ו׳-ח׳</div>
+                        <div class="session-info">16:00-17:15</div>
+                        <div class="session-info">מרום נווה</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">גנים</div>
+                        <div class="session-info">16:45-17:30</div>
+                        <div class="session-info">גבעתיים</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">א׳-ג׳</div>
+                        <div class="session-info">16:45-17:30</div>
+                        <div class="session-info">גבעתיים</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">תיכון</div>
+                        <div class="session-info">17:15-18:30</div>
+                        <div class="session-info">מרום נווה</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">א׳-ג׳</div>
+                        <div class="session-info">17:30-18:15</div>
+                        <div class="session-info">גבעתיים</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">תיכון</div>
+                        <div class="session-info">17:15-18:30</div>
+                        <div class="session-info">מרום נווה</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">ד׳-ו׳</div>
+                        <div class="session-info">17:30-18:15</div>
+                        <div class="session-info">גבעתיים</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">בוגרים</div>
+                        <div class="session-info">18:30-19:45</div>
+                        <div class="session-info">מרום נווה</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">נוער</div>
+                        <div class="session-info">18:30-19:30</div>
+                        <div class="session-info">גבעתיים</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">בוגרים</div>
+                        <div class="session-info">18:30-19:45</div>
+                        <div class="session-info">מרום נווה</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">נוער ז׳-י׳</div>
+                        <div class="session-info">18:30-19:30</div>
+                        <div class="session-info">גבעתיים</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+
+                <!-- Row 5 -->
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">בוגרים</div>
+                        <div class="session-info">19:30-20:30</div>
+                        <div class="session-info">גבעתיים</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="session">
+                        <div class="session-type">בוגרים</div>
+                        <div class="session-info">19:30-20:30</div>
+                        <div class="session-info">גבעתיים</div>
+                    </div>
+                </div>
+                <div class="schedule-cell">
+                    <div class="empty-slot">-</div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">הסיפור שלי</div>
-                <h2 class="section-title">הכירו את <span>איתי</span></h2>
-                <p class="section-subtitle">מאמן MMA מקצועי עם ניסיון תחרותי עשיר וגישה אישית לכל מתאמן</p>
-            </div>
-            <div class="about-content reveal">
-                <div class="about-image">
-                    <img src="itay-profile.jpg" alt="איתי תמיר - מאמן MMA">
-                    <div class="about-badge">
-                        <span class="number">7+</span>
-                        שנות ניסיון
-                    </div>
-                </div>
-                <div class="about-text">
-                    <h3>הראשון בישראל שקיבל הכרה מהצבא כספורטאי מצטיין ב-MMA</h3>
-                    <p>
-                        איתי תמיר הוא מתאמן ומדריך בעל 7 שנות ניסיון באומנויות לחימה משולבות. 
-                        כשלוש פעמים אלוף ישראל ב-MMA ואלוף ישראל לשעבר בתחומים נוספים, 
-                        איתי מביא עמו ניסיון תחרותי עשיר וידע מקצועי מעמיק.
-                    </p>
-                    <p>
-                        בית הספר שלנו מעניק מסגרת ערכית ובטוחה עם מודל לחיקוי אמיתי. 
-                        אימון מקצועי ברמה הגבוהה ביותר בישראל, המותאם אישית לכל מתאמן.
-                    </p>
-                    <div class="about-features">
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>גישה אישית ומותאמת</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>ניסיון תחרותי מוכח</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>מסגרת בטוחה וערכית</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>מתאים לכל הרמות</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Notes -->
+        <div class="notes">
+            <h3><i class="fas fa-info-circle"></i> הערות חשובות</h3>
+            <ul>
+                <li>שני מקומות אימון: מרום נווה וגבעתיים</li>
+                <li>אימונים פרטיים ניתן לתאם בשעות נוספות - צרו קשר</li>
+                <li>יש להגיע 10 דקות לפני תחילת האימון</li>
+                <li>נא להביא מגבת ובקבוק מים</li>
+                <li>ציוד אימון זמין להשאלה במקום</li>
+                <li>ביטול אימון יש לעדכן לפחות 24 שעות מראש</li>
+            </ul>
         </div>
-    </section>
 
-    <!-- Values Section -->
-    <section class="values" id="values">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">היתרונות</div>
-                <h2 class="section-title">למה להתאמן <span>איתי</span>?</h2>
-                <p class="section-subtitle">שלושה תחומים מרכזיים שתפתח באימונים שלנו</p>
-            </div>
-            <div class="values-grid">
-                <div class="value-card reveal">
-                    <div class="value-icon">
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <h3>כושר גופני</h3>
-                    <p>חיזוק שרירים ושיפור סיבולת, שיפור קואורדינציה וגמישות, תחושה אגרסיבית והכנסה ביומיום</p>
-                </div>
-                <div class="value-card reveal">
-                    <div class="value-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>הגנה עצמית</h3>
-                    <p>טכניקות יעילות ומעשיות, ביטחון עצמי במצבים מאתגרים, שליטה ואחריות על הכוח</p>
-                </div>
-                <div class="value-card reveal">
-                    <div class="value-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>מסגרת תחרותית</h3>
-                    <p>אפשרות להתקדם לתחרויות מקצועיות, הצבת מטרות והתמודדות עם אתגרים, פיתוח משמעת והתמדה</p>
-                </div>
-            </div>
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title">מוכן להתחיל? 💪</h2>
+            <p class="cta-text">צור קשר עכשיו לקביעת אימון ראשון או להצטרפות לקבוצה</p>
+            <a href="/contact.html" class="cta-button">
+                <i class="fas fa-phone"></i>
+                צור קשר
+            </a>
         </div>
-    </section>
-
-    <!-- Training Types -->
-    <section class="training" id="training">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">השירותים</div>
-                <h2 class="section-title">סוגי <span>אימונים</span></h2>
-                <p class="section-subtitle">בחר את המסלול המתאים לך</p>
-            </div>
-            <div class="training-grid">
-                <div class="training-card reveal">
-                    <div class="training-card-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <h3>אימון פרטי</h3>
-                    <ul>
-                        <li>תשומת לב אישית מלאה</li>
-                        <li>תוכנית מותאמת אישית</li>
-                        <li>התקדמות מהירה ויעילה</li>
-                        <li>גמישות מלאה בשעות</li>
-                        <li>מתאים לכל רמה וגיל</li>
-                    </ul>
-                    <div class="training-price">
-                        <div class="training-price-label">החל מ-</div>
-                        <a href="contact.html" class="training-cta-btn">צור קשר לפרטים</a>
-                    </div>
-                </div>
-                <div class="training-card reveal">
-                    <div class="training-card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>אימון קבוצתי</h3>
-                    <ul>
-                        <li>אווירה חברתית ומוטיבציה</li>
-                        <li>למידה מעמיתים לקבוצה</li>
-                        <li>תרגול עם פרטנרים שונים</li>
-                        <li>מחיר נגיש יותר</li>
-                        <li>מספר פעמים בשבוע</li>
-                    </ul>
-                    <div class="training-price">
-                        <div class="training-price-label">החל מ-</div>
-                        <a href="contact.html" class="training-cta-btn">צור קשר לפרטים</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Contact Section -->
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">שאלות נפוצות</div>
-                <h2 class="section-title">יש לך <span>שאלות?</span></h2>
-                <p class="section-subtitle">הנה התשובות לשאלות הנפוצות ביותר</p>
-            </div>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>האם האימונים מתאימים למתחילים בלי ניסיון?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>בהחלט! רוב המתאמנים שלנו התחילו בלי שום ניסיון קודם. האימונים מותאמים אישית לרמה שלך, ואנחנו מתקדמים בקצב שנוח לך. הסביבה תומכת ובטוחה.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>מה צריך להביא לאימון?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>בגדי ספורט נוחים, מגבת ובקבוק מים. ציוד אימון (כפפות, מגיני שוקיים) זמין להשאלה במקום לאימונים הראשונים.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>האם יש סכנה להיפצע באימונים?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>הבטיחות היא בראש סדר העדיפויות שלנו. כל האימונים מבוקרים ומותאמים לרמה שלך. אנחנו מלמדים טכניקה נכונה לפני כל דבר אחר, ולא עושים ספארינג מלא בהתחלה.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>כמה פעמים בשבוע מומלץ להתאמן?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>למתחילים, 2-3 פעמים בשבוע זה אידיאלי. עם הזמן אפשר להגדיל את התדירות. גם אימון אחד בשבוע יביא תוצאות - העיקר להתחיל!</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>מה ההבדל בין אימון פרטי לקבוצתי?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>אימון פרטי מציע תשומת לב מלאה והתאמה מושלמת לצרכים שלך. אימון קבוצתי מציע אווירה חברתית, תרגול עם פרטנרים שונים, ומחיר נגיש יותר. שניהם יעילים!</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>האם יש אימון ניסיון?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>כן! אנחנו מציעים אימון ניסיון ראשון בעלות סימלית כדי שתוכל להכיר את הסגנון, האווירה, ולהחליט אם זה מתאים לך. ללא התחייבות.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   
+    </main>
 
     <!-- Footer -->
     <footer>
