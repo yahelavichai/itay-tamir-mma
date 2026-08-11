@@ -386,6 +386,25 @@
             margin-top: 5px;
         }
 
+        .hero-invite {
+            font-size: 1.35rem;
+            line-height: 1.6;
+            color: var(--text-white);
+            margin-bottom: 25px;
+            padding-right: 18px;
+            border-right: 3px solid var(--accent-orange);
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+
+        .hero-invite strong {
+            display: block;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         .cta-buttons {
             display: flex;
             gap: 20px;
@@ -408,12 +427,35 @@
         .cta-primary {
             background: var(--gradient-primary);
             color: var(--text-white);
+            padding: 20px 48px;
+            font-size: 1.2rem;
             box-shadow: 0 10px 40px rgba(255, 107, 53, 0.4);
+            animation: ctaPulse 2.8s ease-in-out infinite;
+        }
+
+        @keyframes ctaPulse {
+            0%, 100% { box-shadow: 0 10px 40px rgba(255, 107, 53, 0.4); }
+            50% { box-shadow: 0 14px 55px rgba(255, 107, 53, 0.75); }
+        }
+
+        .cta-primary i {
+            transition: transform 0.3s ease;
         }
 
         .cta-primary:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 50px rgba(255, 107, 53, 0.5);
+            animation: none;
+        }
+
+        .cta-primary:hover i {
+            transform: translateX(-6px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cta-primary {
+                animation: none;
+            }
         }
 
         .cta-secondary {
@@ -559,6 +601,269 @@
             margin: 0 auto;
         }
 
+        /* Locations Section */
+        .locations {
+            background: var(--primary-dark);
+        }
+
+        .schedule-label {
+            display: inline-block;
+            margin-bottom: 35px;
+            padding: 10px 26px;
+            border: 1px solid rgba(255, 107, 53, 0.5);
+            border-radius: 50px;
+            background: rgba(255, 107, 53, 0.08);
+            color: var(--accent-orange);
+            font-size: 1.05rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 10;
+        }
+
+        .city-group {
+            position: relative;
+            z-index: 10;
+        }
+
+        .city-group + .city-group {
+            margin-top: 70px;
+        }
+
+        .city-name {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent-orange);
+            margin-bottom: 30px;
+        }
+
+        .city-name::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to left, var(--accent-orange), transparent);
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .locations-grid .location-card {
+            position: relative;
+            background: var(--secondary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 18px;
+            padding: 35px;
+            transition: transform 0.4s ease, opacity 0.8s ease, box-shadow 0.4s ease;
+        }
+
+        .locations-grid .location-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            right: 30px;
+            width: 110px;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+
+        /* Beats .reveal.active, which sets transform later in the sheet */
+        .locations-grid .location-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .location-name {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .location-address {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .location-address::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-orange);
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .location-days {
+            display: inline-block;
+            margin: 18px 0 22px;
+            padding: 7px 18px;
+            border: 1px solid rgba(255, 107, 53, 0.6);
+            border-radius: 6px;
+            color: var(--accent-orange);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .location-schedule {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .location-schedule th {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            text-align: right;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .location-schedule th:last-child,
+        .location-schedule td.ages {
+            text-align: left;
+        }
+
+        .location-schedule td {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .location-schedule tbody tr:last-child td {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* direction: ltr keeps "16:00–16:45" from being flipped by the RTL bidi algorithm */
+        .location-schedule td.time {
+            font-size: 1.05rem;
+            font-weight: 700;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .location-schedule td.ages {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Adults Schedule Section */
+        .adults {
+            background: var(--gradient-dark);
+        }
+
+        .adults-venues {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 45px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .venue {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            padding: 25px 30px;
+        }
+
+        .venue-main {
+            background: rgba(255, 107, 53, 0.06);
+            border-color: rgba(255, 107, 53, 0.45);
+        }
+
+        .venue-tag {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 6px;
+        }
+
+        .venue h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        /* Narrow screens scroll the table instead of crushing four columns */
+        .table-scroll {
+            overflow-x: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .adults-schedule {
+            width: 100%;
+            min-width: 520px;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--secondary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .adults-schedule th {
+            background: rgba(255, 107, 53, 0.12);
+            color: var(--accent-orange);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-align: right;
+            padding: 16px 20px;
+        }
+
+        .adults-schedule td {
+            padding: 16px 20px;
+            text-align: right;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .adults-schedule tbody tr:hover td {
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .adults-schedule .day {
+            font-weight: 700;
+        }
+
+        /* direction: ltr keeps "20:00–21:00" from being flipped by the RTL bidi algorithm */
+        .adults-schedule .time {
+            direction: ltr;
+            text-align: right;
+            font-weight: 700;
+        }
+
+        .adults-schedule .type {
+            color: var(--accent-orange);
+            font-weight: 600;
+        }
+
+        .adults-schedule .place {
+            color: var(--text-gray);
+        }
+
+        .adults-note {
+            margin-top: 30px;
+            padding: 20px 25px;
+            background: rgba(255, 107, 53, 0.08);
+            border-right: 3px solid var(--accent-orange);
+            border-radius: 10px;
+            color: var(--text-light-gray);
+            position: relative;
+            z-index: 10;
+        }
+
+        .adults-note i {
+            color: var(--accent-orange);
+            margin-left: 10px;
+        }
+
         /* About Section */
         .about {
             background: var(--secondary-dark);
@@ -578,95 +883,102 @@
             opacity: 0.5;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
+        /* Coaches list — add another .coach-card and it stacks below */
+        .coaches {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
             position: relative;
             z-index: 10;
+            padding-bottom: 40px;
         }
 
-        .about-image {
-            position: relative;
+        .coaches .coach-card {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 45px;
+            align-items: center;
+            background: rgba(15, 15, 15, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 24px;
+            padding: 48px;
+            transition: transform 0.4s ease, opacity 0.8s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
-        .about-image-placeholder {
+        /* Beats .reveal.active, which sets transform later in the sheet */
+        .coaches .coach-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 107, 53, 0.45);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+        }
+
+        .coach-photo img {
             width: 100%;
-            aspect-ratio: 4/5;
-            background: var(--gradient-primary);
+            aspect-ratio: 1;
+            object-fit: cover;
+            object-position: top;
+            display: block;
             border-radius: 20px;
+            border: 3px solid rgba(255, 107, 53, 0.35);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 2:3 portrait in a square slot: drop the crop down, off the empty ceiling */
+        .coach-photo img.focus-itay {
+            object-position: center 65%;
+        }
+
+        /* 3:2 action shot in a square slot: slide the crop onto אלישע, off the referee */
+        .coach-photo img.focus-elisha {
+            object-position: 29% center;
+        }
+
+        /* Stand-in until a real photo exists — dashed so it reads as unfinished */
+        .coach-photo-placeholder {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            border: 3px dashed rgba(255, 107, 53, 0.4);
+            background: rgba(255, 107, 53, 0.07);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-image-placeholder::before {
-            content: '📸 תמונה של איתי';
-            position: absolute;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-        }
-
-        .about-badge {
-            position: absolute;
-            bottom: -25px;
-            left: -25px;
-            background: var(--gradient-primary);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            font-weight: 700;
-            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
-        }
-
-        .about-badge .number {
-            font-size: 3rem;
-            display: block;
-            line-height: 1;
-        }
-
-        .about-text h3 {
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            line-height: 1.3;
-        }
-
-        .about-text p {
-            color: var(--text-gray);
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-        }
-
-        .about-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .about-feature {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-light-gray);
-        }
-
-        .about-feature i {
+            gap: 12px;
             color: var(--accent-orange);
-            font-size: 1.2rem;
+        }
+
+        .coach-photo-placeholder i {
+            font-size: 3.5rem;
+            opacity: 0.7;
+        }
+
+        .coach-photo-placeholder span {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .coach-name {
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .coach-role {
+            display: inline-block;
+            margin: 8px 0 18px;
+            padding: 5px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-orange);
+            background: rgba(255, 107, 53, 0.12);
+            border: 1px solid rgba(255, 107, 53, 0.35);
+        }
+
+        .coach-bio {
+            color: var(--text-gray);
+            font-size: 1.1rem;
         }
 
         /* Values Section */
@@ -1187,6 +1499,15 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
+            /* Six nav items need less breathing room before the hamburger kicks in at 768 */
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-links a {
+                font-size: 0.95rem;
+            }
+
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1196,6 +1517,11 @@
             .hero-content {
                 text-align: center;
                 order: 1;
+            }
+
+            .hero-invite {
+                border-right: none;
+                padding-right: 0;
             }
 
             .hero-stats {
@@ -1212,13 +1538,25 @@
                 margin: 0 auto;
             }
 
-            .about-content,
             .contact-wrapper {
                 grid-template-columns: 1fr;
             }
 
+            .coaches .coach-card {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                text-align: center;
+                gap: 25px;
+            }
+
+            .coach-photo {
+                max-width: 220px;
+            }
+
             .values-grid,
-            .testimonials-grid {
+            .testimonials-grid,
+            .locations-grid,
+            .adults-venues {
                 grid-template-columns: 1fr;
             }
 
@@ -1275,6 +1613,10 @@
                 font-size: 1.3rem;
             }
 
+            .hero-invite {
+                font-size: 1.15rem;
+            }
+
             .hero-video-wrapper {
                 max-width: 280px;
             }
@@ -1292,8 +1634,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .about-features {
-                grid-template-columns: 1fr;
+            .coaches .coach-card {
+                padding: 25px;
             }
 
             .gallery-grid {
@@ -1582,9 +1924,9 @@
             <ul class="nav-links">
                 <li><a href="contact.html">צור קשר</a></li>
                 <li><a href="index.html#faq">שאלות נפוצות</a></li>
-                <li><a href="schedule.html">לו״ז אימונים</a></li>
-                <li><a href="index.html#training">אימונים</a></li>
-                <li><a href="index.html#about">אודות</a></li>
+                <li><a href="index.html#about">המאמנים שלנו</a></li>
+                <li><a href="index.html#adults">לו״ז בוגרים</a></li>
+                <li><a href="index.html#locations">מרכזי אימוני ילדים</a></li>
                 <li><a href="index.html#home">ראשי</a></li>
             </ul>
             <button class="mobile-menu-btn" onclick="toggleMenu()">
@@ -1601,19 +1943,19 @@
         </video>
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge">🏆 3 פעמים אלוף ישראל</div>
                 <h1 class="hero-title">הפוך <span>לגרסה החזקה</span> של עצמך</h1>
-                <p class="hero-subtitle">בית ספר לאומנויות לחימה משולבות</p>
+                <p class="hero-subtitle">ברוכים הבאים למועדון ה־MMA המוביל באזור גבעתיים ורמת־גן.</p>
                 <p class="hero-description">
-                    הצטרף לאלוף ישראל ב-MMA ולמד טכניקות לחימה מקצועיות במסגרת אישית ובטוחה. 
-                    מתאים לכל הרמות - ממתחילים ועד מתקדמים.
+                    אימונים לכל הגילאים, בקבוצות קטנות, עם יחס אישי ומקצוענות שלא מתפשרת
+                </p>
+                <p class="hero-invite">
+                    הצעד הראשון הוא היחיד שקשה.
+                    <strong>את השאר נעשה ביחד.</strong>
                 </p>
                 <div class="cta-buttons">
                     <a href="contact.html" class="cta-button cta-primary">
-                        לקביעת אימון ניסיון
-                    </a>
-                    <a href="#about" class="cta-button cta-secondary">
-                        למד עוד
+                        <i class="fas fa-arrow-left"></i>
+                        קבעו אימון ניסיון
                     </a>
                 </div>
             </div>
@@ -1635,52 +1977,228 @@
         </div>
     </section>
 
+    <!-- Locations Section -->
+    <section class="locations" id="locations">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">איפה מתאמנים</div>
+                <h2 class="section-title">מרכזי <span>הפעילות</span> שלנו</h2>
+                <p class="section-subtitle">ארבעה מרכזים בגבעתיים וברמת־גן, עם לוח אימונים מלא לכל שכבת גיל</p>
+            </div>
+
+            <p class="schedule-label">לו״ז אימוני ילדים</p>
+
+            <div class="city-group">
+                <h3 class="city-name">גבעתיים</h3>
+                <div class="locations-grid">
+                    <article class="location-card reveal">
+                        <h4 class="location-name">בית ספר ברנר</h4>
+                        <p class="location-address">רחוב התע״ש 22</p>
+                        <span class="location-days">ימי שני וחמישי</span>
+                        <table class="location-schedule">
+                            <thead>
+                                <tr>
+                                    <th scope="col">שעות</th>
+                                    <th scope="col">גילאים</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="time">16:00–16:45</td><td class="ages">ד׳–ו׳</td></tr>
+                                <tr><td class="time">16:45–17:30</td><td class="ages">גנים</td></tr>
+                                <tr><td class="time">17:30–18:15</td><td class="ages">א׳–ג׳</td></tr>
+                                <tr><td class="time">18:30–19:30</td><td class="ages">ז׳–י׳</td></tr>
+                            </tbody>
+                        </table>
+                    </article>
+
+                    <article class="location-card reveal">
+                        <h4 class="location-name">מרכז קהילתי שדה בוקר</h4>
+                        <p class="location-address">רחוב שדה בוקר 10</p>
+                        <span class="location-days">ימי שני וחמישי</span>
+                        <table class="location-schedule">
+                            <thead>
+                                <tr>
+                                    <th scope="col">שעות</th>
+                                    <th scope="col">גילאים</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="time">16:00–16:45</td><td class="ages">ד׳–ו׳</td></tr>
+                                <tr><td class="time">16:45–17:30</td><td class="ages">גנים</td></tr>
+                                <tr><td class="time">17:30–18:15</td><td class="ages">א׳–ג׳</td></tr>
+                                <tr><td class="time">18:30–19:30</td><td class="ages">ז׳–י׳</td></tr>
+                            </tbody>
+                        </table>
+                    </article>
+                </div>
+            </div>
+
+            <div class="city-group">
+                <h3 class="city-name">רמת־גן</h3>
+                <div class="locations-grid">
+                    <article class="location-card reveal">
+                        <h4 class="location-name">מרכז רמת חן</h4>
+                        <p class="location-address">רחוב יאיר 43</p>
+                        <span class="location-days">ימי ראשון ורביעי</span>
+                        <table class="location-schedule">
+                            <thead>
+                                <tr>
+                                    <th scope="col">שעות</th>
+                                    <th scope="col">גילאים</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="time">16:00–16:45</td><td class="ages">ד׳–ו׳</td></tr>
+                                <tr><td class="time">16:45–17:30</td><td class="ages">גנים</td></tr>
+                                <tr><td class="time">17:30–18:15</td><td class="ages">א׳–ג׳</td></tr>
+                                <tr><td class="time">18:30–19:30</td><td class="ages">ז׳–י׳</td></tr>
+                            </tbody>
+                        </table>
+                    </article>
+
+                    <article class="location-card reveal">
+                        <h4 class="location-name">מרכז מרום נווה</h4>
+                        <p class="location-address">רחוב חזון אי״ש 90</p>
+                        <span class="location-days">ימי ראשון ורביעי</span>
+                        <table class="location-schedule">
+                            <thead>
+                                <tr>
+                                    <th scope="col">שעות</th>
+                                    <th scope="col">גילאים</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="time">16:30–17:15</td><td class="ages">גנים</td></tr>
+                                <tr><td class="time">17:15–18:00</td><td class="ages">א׳–ג׳</td></tr>
+                                <tr><td class="time">18:00–19:00</td><td class="ages">ד׳–ו׳</td></tr>
+                                <tr><td class="time">19:00–20:00</td><td class="ages">ז׳–י׳</td></tr>
+                            </tbody>
+                        </table>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adults Schedule Section -->
+    <section class="adults" id="adults">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">בוגרים</div>
+                <h2 class="section-title">לו״ז אימוני <span>בוגרים</span></h2>
+                <p class="section-subtitle">שבוע אימונים מלא, בשני מרכזים</p>
+            </div>
+
+            <div class="adults-venues">
+                <div class="venue venue-main">
+                    <span class="venue-tag">המרכז הראשי</span>
+                    <h3>רחוב שדה בוקר 10, גבעתיים</h3>
+                </div>
+                <div class="venue">
+                    <span class="venue-tag">אפשרות נוספת</span>
+                    <h3>אולם ספורט מרום נווה, רחוב חזון אי״ש 90, רמת־גן</h3>
+                </div>
+            </div>
+
+            <div class="table-scroll reveal">
+                <table class="adults-schedule">
+                    <thead>
+                        <tr>
+                            <th scope="col">יום</th>
+                            <th scope="col">שעות</th>
+                            <th scope="col">אימון</th>
+                            <th scope="col">מרכז</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="day">ראשון</td>
+                            <td class="time">18:30</td>
+                            <td class="type">סטרייקינג</td>
+                            <td class="place">רמת־גן</td>
+                        </tr>
+                        <tr>
+                            <td class="day">שני</td>
+                            <td class="time">19:30</td>
+                            <td class="type">גראפלינג</td>
+                            <td class="place">גבעתיים</td>
+                        </tr>
+                        <tr>
+                            <td class="day">שלישי</td>
+                            <td class="time">20:00–21:00</td>
+                            <td class="type">MMA</td>
+                            <td class="place">גבעתיים</td>
+                        </tr>
+                        <tr>
+                            <td class="day">רביעי</td>
+                            <td class="time">20:00–21:00</td>
+                            <td class="type">MMA</td>
+                            <td class="place">רמת־גן</td>
+                        </tr>
+                        <tr>
+                            <td class="day">חמישי</td>
+                            <td class="time">19:30</td>
+                            <td class="type">סטרייקינג</td>
+                            <td class="place">גבעתיים</td>
+                        </tr>
+                        <tr>
+                            <td class="day">שישי</td>
+                            <td class="time">12:30–13:30</td>
+                            <td class="type">מזרן פתוח (אימון קרבות)</td>
+                            <td class="place">גבעתיים</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="adults-note">
+                <i class="fas fa-info-circle"></i>
+                ניתן לחבר בין המרכזים ולבנות שבוע אימונים לפי ההעדפה של כל מתאמן.
+            </p>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">הסיפור שלי</div>
-                <h2 class="section-title">הכירו את <span>איתי</span></h2>
-                <p class="section-subtitle">מאמן MMA מקצועי עם ניסיון תחרותי עשיר וגישה אישית לכל מתאמן</p>
+                <div class="section-badge">הצוות</div>
+                <h2 class="section-title">הכירו את <span>המאמנים שלנו</span></h2>
             </div>
-            <div class="about-content reveal">
-                <div class="about-image">
-                    <img src="itay-profile.jpg" alt="איתי תמיר - מאמן MMA">
-                    <div class="about-badge">
-                        <span class="number">7+</span>
-                        שנות ניסיון
+            <div class="coaches">
+                <article class="coach-card reveal">
+                    <div class="coach-photo">
+                        <img src="itay-stance.jpg" alt="איתי תמיר - מאמן MMA" class="focus-itay">
                     </div>
-                </div>
-                <div class="about-text">
-                    <h3>הראשון בישראל שקיבל הכרה מהצבא כספורטאי מצטיין ב-MMA</h3>
-                    <p>
-                        איתי תמיר הוא מתאמן ומדריך בעל 7 שנות ניסיון באומנויות לחימה משולבות. 
-                        כשלוש פעמים אלוף ישראל ב-MMA ואלוף ישראל לשעבר בתחומים נוספים, 
-                        איתי מביא עמו ניסיון תחרותי עשיר וידע מקצועי מעמיק.
-                    </p>
-                    <p>
-                        בית הספר שלנו מעניק מסגרת ערכית ובטוחה עם מודל לחיקוי אמיתי. 
-                        אימון מקצועי ברמה הגבוהה ביותר בישראל, המותאם אישית לכל מתאמן.
-                    </p>
-                    <div class="about-features">
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>גישה אישית ומותאמת</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>ניסיון תחרותי מוכח</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>מסגרת בטוחה וערכית</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>מתאים לכל הרמות</span>
-                        </div>
+                    <div class="coach-info">
+                        <h3 class="coach-name">איתי תמיר</h3>
+                        <p class="coach-role">מאמן ראשי</p>
+                        <p class="coach-bio">
+                            בעל ניסיון של 10 שנים בתחום, עם ניסיון רב באימון ילדים, בוגרים ומתחרים.
+                            כשלוש פעמים אלוף ישראל ב-MMA והראשון בישראל שקיבל הכרה מהצבא כספורטאי מצטיין ב-MMA,
+                            איתי מביא עמו רקע תחרותי עשיר וידע מקצועי מעמיק.
+                        </p>
                     </div>
-                </div>
+                </article>
+
+                <article class="coach-card reveal">
+                    <div class="coach-photo">
+                        <img src="elisha-profile.jpg" alt="אלישע שוקרון - מאמן MMA" class="focus-elisha">
+                    </div>
+                    <div class="coach-info">
+                        <h3 class="coach-name">אלישע שוקרון</h3>
+                        <p class="coach-role">מאמן</p>
+                        <p class="coach-bio">
+                            אלישע שוקרון, אלוף ישראל לשעבר ב־MMA, מביא עמו רקע תחרותי עשיר בארץ ובעולם.
+                            עם ניסיון באימון ילדים, בוגרים ומתחרים, אלישע משלב מקצוענות ברמה הגבוהה ביותר
+                            עם אוזן קשבת ויחס אישי לכל מתאמן.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- מאמן נוסף: העתק את בלוק ה-<article class="coach-card reveal"> שלמעלה,
+                     והחלף תמונה (src ו-alt), שם, תפקיד ותיאור. הכרטיס ייכנס אוטומטית מתחת. -->
+
             </div>
         </div>
     </section>
@@ -1714,53 +2232,6 @@
                     </div>
                     <h3>מסגרת תחרותית</h3>
                     <p>אפשרות להתקדם לתחרויות מקצועיות, הצבת מטרות והתמודדות עם אתגרים, פיתוח משמעת והתמדה</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Training Types -->
-    <section class="training" id="training">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">השירותים</div>
-                <h2 class="section-title">סוגי <span>אימונים</span></h2>
-                <p class="section-subtitle">בחר את המסלול המתאים לך</p>
-            </div>
-            <div class="training-grid">
-                <div class="training-card reveal">
-                    <div class="training-card-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <h3>אימון פרטי</h3>
-                    <ul>
-                        <li>תשומת לב אישית מלאה</li>
-                        <li>תוכנית מותאמת אישית</li>
-                        <li>התקדמות מהירה ויעילה</li>
-                        <li>גמישות מלאה בשעות</li>
-                        <li>מתאים לכל רמה וגיל</li>
-                    </ul>
-                    <div class="training-price">
-                        <div class="training-price-label">החל מ-</div>
-                        <a href="contact.html" class="training-cta-btn">צור קשר לפרטים</a>
-                    </div>
-                </div>
-                <div class="training-card reveal">
-                    <div class="training-card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>אימון קבוצתי</h3>
-                    <ul>
-                        <li>אווירה חברתית ומוטיבציה</li>
-                        <li>למידה מעמיתים לקבוצה</li>
-                        <li>תרגול עם פרטנרים שונים</li>
-                        <li>מחיר נגיש יותר</li>
-                        <li>מספר פעמים בשבוע</li>
-                    </ul>
-                    <div class="training-price">
-                        <div class="training-price-label">החל מ-</div>
-                        <a href="contact.html" class="training-cta-btn">צור קשר לפרטים</a>
-                    </div>
                 </div>
             </div>
         </div>

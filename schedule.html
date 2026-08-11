@@ -745,6 +745,15 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
+            /* Six nav items need less breathing room before the hamburger kicks in at 768 */
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-links a {
+                font-size: 0.95rem;
+            }
+
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1141,9 +1150,9 @@
             <ul class="nav-links">
                 <li><a href="contact.html">צור קשר</a></li>
                 <li><a href="index.html#faq">שאלות נפוצות</a></li>
-                <li><a href="schedule.html">לו״ז אימונים</a></li>
-                <li><a href="index.html#training">אימונים</a></li>
-                <li><a href="index.html#about">אודות</a></li>
+                <li><a href="index.html#about">המאמנים שלנו</a></li>
+                <li><a href="index.html#adults">לו״ז בוגרים</a></li>
+                <li><a href="index.html#locations">מרכזי אימוני ילדים</a></li>
                 <li><a href="index.html#home">ראשי</a></li>
             </ul>
             <button class="mobile-menu-btn" onclick="toggleMenu()">
