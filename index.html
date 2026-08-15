@@ -405,6 +405,51 @@
             background-clip: text;
         }
 
+        /* Yellow, not orange — so the offer reads as separate from the CTA button
+           instead of merging into one block of brand colour */
+        .promo {
+            margin-bottom: 28px;
+            padding: 22px 26px;
+            border: 1px solid rgba(255, 214, 10, 0.45);
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255, 214, 10, 0.12), rgba(255, 107, 53, 0.08));
+            animation: fadeInUp 0.8s ease 0.9s both;
+        }
+
+        .promo-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--accent-yellow);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .promo-text {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: var(--text-white);
+        }
+
+        /* Own bidi context so "250 ₪" is not reordered in the RTL paragraph */
+        .promo-text strong {
+            display: inline-block;
+            direction: ltr;
+            font-size: 1.55rem;
+            font-weight: 900;
+            color: var(--accent-yellow);
+            white-space: nowrap;
+        }
+
+        .promo-deadline {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-gray);
+        }
+
         .cta-buttons {
             display: flex;
             gap: 20px;
@@ -1524,6 +1569,10 @@
                 padding-right: 0;
             }
 
+            .promo-head {
+                justify-content: center;
+            }
+
             .hero-stats {
                 justify-content: center;
             }
@@ -1952,6 +2001,17 @@
                     הצעד הראשון הוא היחיד שקשה.
                     <strong>את השאר נעשה ביחד.</strong>
                 </p>
+                <!-- מבצע תחילת שנה — להסיר אחרי 30.9 -->
+                <div class="promo">
+                    <div class="promo-head">
+                        <i class="fas fa-gift"></i>
+                        <span>מבצע תחילת שנה</span>
+                    </div>
+                    <p class="promo-text">
+                        כל מנוי חדש מקבל <strong>250 ₪</strong> מתנה לרכישת ציוד לחימה — כפפות, מגנים וכל מה שצריך כדי לעלות על המזרן.
+                    </p>
+                    <p class="promo-deadline">ההטבה בתוקף להרשמות עד 30 בספטמבר בלבד</p>
+                </div>
                 <div class="cta-buttons">
                     <a href="contact.html" class="cta-button cta-primary">
                         <i class="fas fa-arrow-left"></i>
